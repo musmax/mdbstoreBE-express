@@ -113,7 +113,7 @@ const verifyEmail = async (verifyEmailToken) => {
  */
 const extractPermissions = (user) => {
   const permissions = [];
-  const roles = user.roles.map((role) => role.dataValues.name);
+  const roles = user.roles.map((role) => role.dataValues.name); 
   user.roles.map((role) =>
     role.dataValues.permissions.map((permission) => {
       // push only if not exists

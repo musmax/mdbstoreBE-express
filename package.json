@@ -53,6 +53,7 @@
     "colors": "^1.4.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "create-nodejs-express-app": "file:",
     "cross-env": "^7.0.3",
     "csv-parse": "^5.3.6",
     "dotenv": "^10.0.0",

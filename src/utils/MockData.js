@@ -15,69 +15,23 @@ const setAdminPermissions = async () => {
   await adminRole.setPermissions(adminPermissions);
 };
 
-const setStudentPermissions = async () => {
-  const studentRole = await Role.findOne({ where: { name: 'student' } });
-  const permissionsValue = ['users.view', 'users.manage', 'schools.view'];
+const setUserPermissions = async () => {
+  const studentRole = await Role.findOne({ where: { name: 'user' } });
+  const permissionsValue = ['users.view', 'users.manage'];
   const userPermissions = await Permission.findAll({ where: { value: permissionsValue } });
   await studentRole.setPermissions(userPermissions);
-};
-const setTeacherPermissions = async () => {
-  const teacherRole = await Role.findOne({ where: { name: 'teaching-staff' } });
-  const permissionsValue = ['users.view', 'users.manage', 'schools.view'];
-  const userPermissions = await Permission.findAll({ where: { value: permissionsValue } });
-  await teacherRole.setPermissions(userPermissions);
-};
-const setNonTeacherPermissions = async () => {
-  const teacherRole = await Role.findOne({ where: { name: 'non-teaching-staff' } });
-  const permissionsValue = ['users.view', 'users.manage', 'schools.view'];
-  const userPermissions = await Permission.findAll({ where: { value: permissionsValue } });
-  await teacherRole.setPermissions(userPermissions);
-};
-
-const setSchoolAdministratorPermissions = async () => {
-  const userRole = await Role.findOne({ where: { name: 'school_administrator' } });
-  const permissionsValue = [
-    'users.view',
-    'users.manage',
-    'user.bulkUser',
-    'schools.view',
-    'schools.manage',
-    'users.changeRole',
-    'message_templates.view',
-    'message_templates.manage',
-    'roles.view',
-    'roles.manage',
-  ];
-  const userPermissions = await Permission.findAll({ where: { value: permissionsValue } });
-  await userRole.setPermissions(userPermissions);
 };
 
 const createRoles = async () => {
   // create roles
   const roles = [
     {
-      name: 'student',
-      description: 'Have limited access on the platform',
-    },
-    {
-      name: 'staff',
-      description: 'Have limited access on the platform',
-    },
-    {
-      name: 'teaching-staff',
-      description: 'Have limited access on the platform',
-    },
-    {
-      name: 'non-teaching-staff',
-      description: 'Have limited access on the platform',
-    },
-    {
-      name: 'school_administrator',
-      description: 'Have unlimited access on the platform relating to their school and some system function.',
-    },
-    {
       name: 'admin',
       description: 'system admin with access to all features',
+    },
+    {
+      name: 'user',
+      description: 'system user with access to all features',
     },
   ];
 
@@ -208,11 +162,11 @@ const createUsers = async () => {
     },
   });
 
-  // const userRole = await Role.findOne({
-  //   where: {
-  //     name: 'user',
-  //   },
-  // });
+  const userRole = await Role.findOne({
+    where: {
+      name: 'user',
+    },
+  });
   const users = [
     {
       firstname: 'admin',
@@ -225,17 +179,17 @@ const createUsers = async () => {
       isEmailVerified: true,
       role: [adminRole.id],
     },
-    // {
-    //   firstName: 'user',
-    //   lastName: 'user',
-    //   username: 'user',
-    //   phoneNumber: '12345678',
-    //   email: 'user@example.com',
-    //   password: 'password1',
-    //   userType: 'user',
-    //   isEmailVerified: true,
-    //   role: [userRole.id],
-    // },
+    {
+      firstname: 'user',
+      lastname: 'user',
+      username: 'user',
+      phoneNumber: '12345678',
+      email: 'user@example.com',
+      password: 'password1',
+      userType: 'user',
+      isEmailVerified: true,
+      role: [userRole.id],
+    },
   ];
 
   //   get existing users
@@ -309,18 +263,6 @@ const createPermissions = async () => {
       description: 'Permission to create, delete and modify roles',
     },
     {
-      name: 'View Schools',
-      value: 'schools.view',
-      groupName: 'School Permissions',
-      description: 'Permission to view Schools',
-    },
-    {
-      name: 'Manage Schools',
-      value: 'schools.manage',
-      groupName: 'School Permissions',
-      description: 'Permission to create, delete and modify Schools',
-    },
-    {
       name: 'View Message Templates',
       value: 'message_templates.view',
       groupName: 'Message Template Permissions',
@@ -350,12 +292,6 @@ const createPermissions = async () => {
       groupName: 'Category Permissions',
       description: 'Permission to manage categories',
     },
-    {
-      name: 'Manage Bulk creation',
-      value: 'user.bulkUser',
-      groupName: 'Bulk User creation Permissions',
-      description: 'Permission to create multiplr students or teachers',
-    },
   ];
 
   //   get existing permissions
@@ -374,10 +310,7 @@ const createPermissions = async () => {
 
   // set permissions for roles
   await setAdminPermissions();
-  await setStudentPermissions();
-  await setSchoolAdministratorPermissions();
-  await setTeacherPermissions();
-  await setNonTeacherPermissions();
+  await setUserPermissions();
 };
 
 const createCountries = async () => {

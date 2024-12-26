@@ -5,6 +5,3 @@ module.exports.messageTemplateValidation = require('./message_template.validatio
 module.exports.roleValidation = require('./role.validation');
 module.exports.permissionValidation = require('./permission.validation');
 module.exports.countryValidation = require('./country.validation');
-module.exports.schoolValidation = require('./school.validation');
-module.exports.classValidation = require('./class.validation');
-module.exports.classAttendanceValidation = require('./class_attendance.validation');
