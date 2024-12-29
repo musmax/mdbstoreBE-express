@@ -11,6 +11,7 @@ const { Wallet } = require('./wallet.model');
 const { Transaction } = require('./transaction.model');
 const { Order } = require('./order.model');
 const { Rating } = require('./rating.model');
+const { productCategory } = require('./productCategory.model');
 
 exports.association = () => {
   // User - Token
@@ -43,8 +44,8 @@ exports.association = () => {
    */
 
   // Product - Category
-  Product.belongsToMany(Category, { through: 'product_category' });
-  Category.belongsToMany(Product, { through: 'product_category' });
+  Product.belongsToMany(Category, { through: productCategory, foreignKey: 'productId' });
+  Category.belongsToMany(Product, { through: productCategory, foreignKey: 'categoryId' });
 
   // Product - User
   Product.hasOne(User, { foreignKey: 'createdBy', as: 'product_creator' });

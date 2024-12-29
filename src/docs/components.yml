@@ -97,6 +97,94 @@ components:
         id: 2343953
         name: username
 
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        availableColors:
+          type: array
+          items:
+            type: string
+        categoriesId:
+          type: array
+          items:
+            type: number
+        productImages:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        availableSizes:
+          type: array
+          items:
+            type: string
+        availableQuantity:
+          type: number
+        discount:
+          type: number
+      example:
+        name: Product 1
+        description: This is a product
+        price: 20000
+        availableColors: ["red", "yellow"]
+        availableSizes: ["S", "M", "L"]
+        availableQuantity: 10
+        discount: 0
+        categoriesId: [1, 2]
+        productImages:
+          - url: https://example.com/image1.jpg
+          - url: https://example.com/image2.jpg
+
+
+    UpdateProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        availableColors:
+          type: array
+          items:
+            type: string
+        categoriesId:
+          type: array
+          items:
+            type: number
+        productImages:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        availableSizes:
+          type: array
+          items:
+            type: string
+        availableQuantity:
+          type: number
+        discount:
+          type: number
+      example:
+        name: Product 1
+        price: 100000
+        description: This is a product
+        availableColors: ["red", "yellow"]
+        availableSizes: ["S", "M", "L"]
+        availableQuantity: 10
+        discount: 0
+
+
     MessageTemplate:
       type: object
       properties:
@@ -138,6 +226,23 @@ components:
         title: Admin
         description: All admin
         permissions: [1, 2, 3]
+
+    Rating:
+      type: object
+      properties:
+        review:
+          type: string
+          required: true
+        rating:
+          type: string
+          required: true
+        productId:
+          type: string
+          required: true
+      example:
+        review: This is the product review
+        rating: 5
+        productId: 12345
 
     Permission:
       type: object
@@ -726,8 +831,8 @@ components:
           type: number
       example:
         name: Computer Science
-        url: http://image.jpg
-        parentId: 0
+        icon: http://image.jpg
+        description: This is a category for computer science
 
     CategoryList:
       type: array

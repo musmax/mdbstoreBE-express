@@ -8,3 +8,6 @@ module.exports.roleService = require('./role.service');
 module.exports.permissionService = require('./permissions.service');
 module.exports.uploadService = require('./upload.service');
 module.exports.countryService = require('./country.service');
+module.exports.categoryService = require('./category.service');
+module.exports.productService = require('./product.service');
+module.exports.ratingService = require('./rating.service');

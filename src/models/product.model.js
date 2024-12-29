@@ -1,3 +1,4 @@
+const sequelizePaginate = require('sequelize-paginate');
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
@@ -13,7 +14,10 @@ const Product = sequelize.define('product', {
   price: {
     type: DataTypes.INTEGER,
   },
-  availableColor: {
+  availableColors: {
+    type: DataTypes.JSON,
+  },
+  availableSizes: {
     type: DataTypes.JSON,
   },
   isOutOfStock: {
@@ -26,5 +30,7 @@ const Product = sequelize.define('product', {
     type: DataTypes.FLOAT,
   },
 });
+
+sequelizePaginate.paginate(Product);
 
 module.exports = { Product };

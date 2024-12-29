@@ -6,3 +6,6 @@ module.exports.roleController = require('./role.controller');
 module.exports.permissionController = require('./permission.controller');
 module.exports.uploadController = require('./upload.controller');
 module.exports.countryController = require('./country.controller');
+module.exports.categoryController = require('./category.controller');
+module.exports.productController = require('./product.controller');
+module.exports.ratingController = require('./rating.controller');

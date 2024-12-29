@@ -9,6 +9,9 @@ const roleRoute = require('./role.route');
 const permissionRoute = require('./permission.route');
 const uploadRoute = require('./upload.route');
 const countryRoute = require('./country.route');
+const categoryRoute = require('./category.route');
+const productRoute = require('./product.route');
+const ratingRoute = require('./rating.route');
 
 const router = express.Router();
 
@@ -44,6 +47,18 @@ const defaultRoutes = [
   {
     path: '/countries',
     route: countryRoute,
+  },
+  {
+    path: '/categories',
+    route: categoryRoute,
+  },
+  {
+    path: '/products',
+    route: productRoute,
+  },
+  {
+    path: '/ratings',
+    route: ratingRoute,
   },
 ];
 
