@@ -18,6 +18,9 @@ const swaggerDef = {
     {
       url: `https://school-ease.onrender.com/v1`,
     },
+    {
+      url: `https://mdbstorebe-express.onrender.com/v1`,
+    },
   ],
 };
 

@@ -72,6 +72,14 @@ const getUserById = async (id) => {
           },
         ],
       },
+      {
+        association: 'user_wallet',
+        include: [
+          {
+            association: 'user_transactions',
+          }
+        ]
+      }
     ],
   });
 };
@@ -174,6 +182,14 @@ const queryUsers = async (filter, current) => {
           },
         ],
       },
+      {
+        association: 'user_wallet',
+        include: [
+          {
+            association: 'user_transactions',
+          }
+        ]
+      }
     ],
   };
   const { docs, pages, total } = await User.paginate(options);
@@ -202,6 +218,14 @@ const getUserByEmail = async (email) => {
           },
         ],
       },
+      {
+        association: 'user_wallet',
+        include: [
+          {
+            association: 'user_transactions',
+          }
+        ]
+      }
     ],
   });
 };
