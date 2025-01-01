@@ -11,6 +11,7 @@ const { sendEmail } = require('./email.service');
 const { getMessageTemplateByTitle, convertTemplateToMessage } = require('./message_template.service');
 const config = require('../config/config');
 const { deleteUploadedFile } = require('./upload.service');
+const { Wallet } = require('../models/wallet.model');
 
 /**
  * Check if email is taken
@@ -74,6 +75,7 @@ const getUserById = async (id) => {
     ],
   });
 };
+
 const sendUserWelcomeEmail = async (user) => {
   // get user email and first name
   const { email, firstName } = user.dataValues;
@@ -123,6 +125,12 @@ const createUser = async (userBody) => {
   const user = await User.create(userProfile);
   // Set the user role within the transaction
   await user.setRoles(foundRole);
+  // lets initiate the wallet
+  await Wallet.create({
+    userId: user.id,
+    balance: 0.00,
+    isSuspended: false
+  })
   // Return user object with role
   return getUserById(user.id);
 };

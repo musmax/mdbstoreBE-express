@@ -12,6 +12,7 @@ const { Transaction } = require('./transaction.model');
 const { Order } = require('./order.model');
 const { Rating } = require('./rating.model');
 const { productCategory } = require('./productCategory.model');
+const { OrderProducts } = require('./order_products.model');
 
 exports.association = () => {
   // User - Token
@@ -61,22 +62,24 @@ exports.association = () => {
 
   // User - Transaction
   User.hasMany(Transaction, { foreignKey: 'userId', as: 'user_transactions' });
-  Transaction.belongsTo(User, { foreignKey: 'userId', as: 'user_transactions' });
+  Transaction.belongsTo(User, { foreignKey: 'userId', as: 'user_transaction' });
 
   // Order - Transaction
-  Order.hasMany(Transaction, { foreignKey: 'orderId', as: 'order_transactions' });
-  Transaction.belongsTo(Order, { foreignKey: 'orderId', as: 'order_transactions' });
+  Order.hasOne(Transaction, { foreignKey: 'orderId', as: 'order_transaction' });
+  Transaction.belongsTo(Order, { foreignKey: 'orderId', as: 'order_transaction' });
 
   // Order - User
   Order.hasOne(User, { foreignKey: 'userId', as: 'order_user' });
   User.belongsTo(Order, { foreignKey: 'userId', as: 'order_user' });
 
-  // Order - Product
-  Order.belongsToMany(Product, { through: 'order_product' });
-  Product.belongsToMany(Order, { through: 'order_product' });
+  Order.hasMany(OrderProducts, { foreignKey: 'orderId', as: 'order_product' });
+  OrderProducts.belongsTo(Order, { foreignKey: 'orderId', as: 'order_product' });
+
+  Product.hasMany(OrderProducts, { foreignKey: 'productId', as: 'product_order' });
+  OrderProducts.belongsTo(Product, { foreignKey: 'productId', as: 'product_order' });
 
   // Rating - Product
   Product.hasMany(Rating, { foreignKey: 'productId', as: 'product_ratings' });
-  Rating.belongsTo(Product, { foreignKey: 'productId', as: 'product_ratings' });
+  Rating.belongsTo(Product, { foreignKey: 'productId', as: 'product_rating' });
 
 };

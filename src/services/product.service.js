@@ -83,6 +83,19 @@ const fetchAllProducts = async (filter, options) => {
     where: whereCondition,
     include: [],
     ...options,
+    include: [
+      {
+        association: 'product_creator',
+        attributes: ['id', 'firstname', 'lastname', 'email']
+      },
+      {
+        association: 'categories',
+        through: { attributes: [] },
+      },
+      {
+        association: 'product_ratings',
+      }
+    ]
   });
 
   // Return the paginated response

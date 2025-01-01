@@ -2,15 +2,12 @@ const sequelizePaginate = require('sequelize-paginate');
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const Rating = sequelize.define('rating', {
-  star: {
+const OrderProducts = sequelize.define('orderProducts', {
+  quantity: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  review: {
-    type: DataTypes.STRING,
   },
 });
 
-sequelizePaginate.paginate(Rating);
-module.exports = { Rating };
+sequelizePaginate.paginate(OrderProducts);
+
+module.exports = { OrderProducts };

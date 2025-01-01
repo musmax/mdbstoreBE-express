@@ -24,6 +24,7 @@ try {
   sequelize
     .sync({
       // alter: true,
+      logging: false,
     })
     .then(() => {
       // Load dummy data

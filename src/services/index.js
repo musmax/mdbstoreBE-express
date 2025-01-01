@@ -11,3 +11,5 @@ module.exports.countryService = require('./country.service');
 module.exports.categoryService = require('./category.service');
 module.exports.productService = require('./product.service');
 module.exports.ratingService = require('./rating.service');
+module.exports.paystackService = require('./paystack.service');
+module.exports.billingService = require('./billing.service');

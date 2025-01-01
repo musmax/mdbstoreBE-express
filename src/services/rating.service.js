@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const { Rating } = require('../models/rating.model');
 const { buildWhereCondition } = require('../utils/FilterSort');
+const { fetchProductById } = require('./product.service');
 
 /**
  * @typedef {Object} RatingObject
@@ -20,9 +21,14 @@ const fetchAllratings = async (filter, options) => {
   const { docs, pages, total } = await Rating.paginate({
     where: buildWhereCondition({ ...filter }),
     ...options,
+    include: [
+      {
+        association: 'product_rating'
+      }
+    ]
   });
   return {
-    docs,
+    ratings: docs,
     pagination: {
       limit: options.paginate,
       page: options.page,

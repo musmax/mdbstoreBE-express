@@ -9,3 +9,4 @@ module.exports.countryController = require('./country.controller');
 module.exports.categoryController = require('./category.controller');
 module.exports.productController = require('./product.controller');
 module.exports.ratingController = require('./rating.controller');
+module.exports.billingController = require('./billing.controller');

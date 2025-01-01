@@ -3,7 +3,7 @@ const Joi = require('joi');
 const createRating = {
   body: Joi.object().keys({
     review: Joi.string().required(),
-    stars: Joi.number().required(),
+    star: Joi.number().required(),
     productId: Joi.number().required()
 })};
 
@@ -26,7 +26,7 @@ const updateRatingById = {
   }),
   body: Joi.object().keys({
     review: Joi.string(),
-    stars: Joi.number(),
+    star: Joi.number(),
     productId: Joi.number()
   }),
 };

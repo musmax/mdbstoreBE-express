@@ -8,3 +8,4 @@ module.exports.countryValidation = require('./country.validation');
 module.exports.categoryValidation = require('./category.validation');
 module.exports.productValidation = require('./product.validation');
 module.exports.ratingValidation = require('./rating.validation');
+module.exports.billingValidation = require('./billing.validation');

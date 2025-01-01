@@ -241,8 +241,36 @@ components:
           required: true
       example:
         review: This is the product review
-        rating: 5
+        star: 5
         productId: 12345
+
+
+    Order:
+      type: object
+      properties:
+        paymentMethod:
+          type: string
+          required: true
+        paymentObjects:
+          type: array
+          required: true
+          items:
+            type: object
+            properties:
+              productId:
+                type: integer
+                required: true
+              quantity:
+                type: number
+      example:
+        paymentMethod: paystack
+        deliveryAddress: 52, Shitta street.Dopemu,Agege.Lagos state.
+        paymentObjects:
+          - productId: 12345
+            quantity: 2
+          - productId: 67890
+            quantity: 1
+
 
     Permission:
       type: object
@@ -293,17 +321,17 @@ components:
         name: SS1c1
         description: This class is  for students in the Science Stream, Year 1
 
-    AssignTeacher:
+    Tracker:
       type: object
       properties:
-        classId:
+        deliveryNoteTracker:
           type: string
           required: true
-        teacherId:
-          type: string
+        isDelivered:
+          type: boolean
       example:
-        classId: 1
-        teacherId: 1
+        deliveryNoteTracker: Your order will be delivered by 2nd of Jan, 2025. It is a payment before delivery
+        isDelivered: false
 
     AssignStudent:
       type: object

@@ -1,3 +1,4 @@
+const sequelizePaginate = require('sequelize-paginate');
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
@@ -15,12 +16,11 @@ const Transaction = sequelize.define('Transaction', {
   paymentMethod: {
     type: DataTypes.ENUM('paystack', 'flutterwave', 'monify', 'wallet'),
   },
-  isWalletTransaction: {
-    type: DataTypes.BOOLEAN,
-  },
   alertType: {
     type: DataTypes.ENUM('credit', 'debit', 'reverse', 'overdraft'),
   },
 });
+
+sequelizePaginate.paginate(Transaction);
 
 module.exports = { Transaction };
