@@ -83,15 +83,7 @@ module.exports = router;
  *               lastname: fake name
  *               username: fakeUsername
  *               email: admin@example.com
- *               position: founder
- *               phoneNumbers: ['123456','12345789']
  *               password: password1
- *               schoolObject:
- *                 schoolName: Veronica High School
- *                 schoolLogo: https//www.google.co.uk/url
- *                 address: 12B, Lekki phase one. Lagos
- *                 schoolPhoneNumbers: ['123456','1234567890']
- *                 schoolWebsites: ['www.xyz/opebi.com', 'www.xyz/primary.com']
  *     responses:
  *       "201":
  *         description: Created

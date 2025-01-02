@@ -74,11 +74,6 @@ const getUserById = async (id) => {
       },
       {
         association: 'user_wallet',
-        include: [
-          {
-            association: 'user_transactions',
-          }
-        ]
       }
     ],
   });
@@ -112,8 +107,9 @@ const sendUserWelcomeEmail = async (user) => {
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  // console.log(userBody);
+  console.log(userBody);
   const { userType, role, ...userProfile } = userBody;
+  console.log('musa');
   // Check if email is taken
   if (await isEmailTaken(userProfile.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
@@ -184,11 +180,6 @@ const queryUsers = async (filter, current) => {
       },
       {
         association: 'user_wallet',
-        include: [
-          {
-            association: 'user_transactions',
-          }
-        ]
       }
     ],
   };
@@ -220,11 +211,6 @@ const getUserByEmail = async (email) => {
       },
       {
         association: 'user_wallet',
-        include: [
-          {
-            association: 'user_transactions',
-          }
-        ]
       }
     ],
   });

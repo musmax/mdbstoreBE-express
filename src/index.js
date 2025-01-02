@@ -16,7 +16,7 @@ try {
   association();
 
   // sync database
-  // Product.sync({
+  // User.sync({
   //   alter: true,
   // });
 

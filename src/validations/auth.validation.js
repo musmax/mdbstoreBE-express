@@ -6,58 +6,15 @@ const register = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     firstname: Joi.string().required(),
-    username: Joi.string().required(),
-    phoneNumbers: Joi.array().items(Joi.string()),
+    username: Joi.string(),
     lastname: Joi.string().required(),
-    position: Joi.string().required(),
     userType: Joi.string().valid('user', 'admin').default('user'),
-    role: Joi.string().valid('school_administrator').default('school_administrator'),
-    isEmailVerified: Joi.boolean().default(false),
-    schoolObject: Joi.object().keys({
-      schoolName: Joi.string().required(),
-      address: Joi.string(),
-      schoolLogo: Joi.string(),
-      schoolWebsites: Joi.array().items(Joi.string()),
-      schoolPhoneNumbers: Joi.array().items(Joi.string()),
-    }),
+    role: Joi.string().default('user'),
+    about: Joi.string(),
+    phoneNumber: Joi.string(),
   }),
 };
 
-const studentRegistration = {
-  body: Joi.object().keys({
-    school_id: Joi.number().required(),
-    class_id: Joi.number().required(),
-    role: Joi.string().valid('student').default('student'),
-    password: Joi.string().custom(password).default('password'),
-    firstname: Joi.string().required(),
-    othername: Joi.string().required(),
-    username: Joi.string(),
-    student_school_id: Joi.string(),
-    parent_name: Joi.string(),
-    parent_email: Joi.string().required(),
-    lastname: Joi.string().required(),
-    userType: Joi.string().valid('user', 'admin').default('user'),
-    isEmailVerified: Joi.boolean().default(true),
-    position: Joi.string().default('student'),
-    parent_phone_numbers: Joi.string(),
-  }),
-};
-
-const registerEmployee = {
-  body: Joi.object().keys({
-    school_id: Joi.number().required(),
-    password: Joi.string().required().custom(password),
-    role: Joi.string().valid('staff').default('staff'),
-    firstname: Joi.string().required(),
-    lastname: Joi.string().required(),
-    username: Joi.string(),
-    phone_number: Joi.string(),
-    othername: Joi.string(),
-    userType: Joi.string().valid('user', 'admin').default('user'),
-    isEmailVerified: Joi.boolean().default(true),
-    position: Joi.string().default('staff'),
-  }),
-};
 
 const login = {
   body: Joi.object().keys({
@@ -115,6 +72,4 @@ module.exports = {
   resetPassword,
   verifyEmail,
   sendVerificationEmail,
-  studentRegistration,
-  registerEmployee,
 };

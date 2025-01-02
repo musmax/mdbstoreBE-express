@@ -17,9 +17,6 @@ const User = sequelize.define('user', {
   othername: {
     type: DataTypes.STRING,
   },
-  position: {
-    type: DataTypes.STRING,
-  },
   username: {
     type: DataTypes.STRING,
     unique: true,
@@ -28,26 +25,6 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-    trim: true,
-    lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Invalid email');
-      }
-    },
-  },
-  parent_email: {
-    type: DataTypes.STRING,
-    trim: true,
-    lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Invalid email');
-      }
-    },
-  },
-  staff_email: {
-    type: DataTypes.STRING,
     trim: true,
     lowercase: true,
     validate(value) {
@@ -79,28 +56,12 @@ const User = sequelize.define('user', {
     type: DataTypes.ENUM('admin', 'user'),
     defaultValue: 'user',
   },
-  schoolPhoneNumbers: {
-    type: DataTypes.JSON,
-    trim: true,
-  },
-  parent_phone_numbers: {
+  phoneNumber: {
     type: DataTypes.STRING,
-    trim: true,
-  },
-  phone_numbers: {
-    type: DataTypes.STRING,
-    trim: true,
-  },
-  parent_name: {
-    type: DataTypes.STRING,
-    trim: true,
   },
   about: {
     type: DataTypes.STRING,
     trim: true,
-  },
-  student_school_id: {
-    type: DataTypes.STRING,
   },
   lastLogin: {
     type: DataTypes.DATE,

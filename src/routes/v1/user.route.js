@@ -94,7 +94,7 @@ module.exports = router;
  *               email: fake@example.com
  *               username: fakeuser
  *               phoneNumber: "1234567890"
- *               role: [1]
+ *               role: ['user']
  *               userType: user
  *               password: password1
  *     responses:
