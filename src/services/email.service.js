@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
-dotenv.config(); // Load .env variables
+const {baseUrl} = require('../config/config').frontendurl;
 const config = require('../config/config');
 const logger = require('../config/logger');
 const { User } = require('../models/user.model');
@@ -63,7 +62,7 @@ const sendResetPasswordEmail = async (to, token) => {
 const sendVerificationEmail = async (to, token) => {
   const subject = 'Email Verification';
   // replace this url with the link to the email verification page of your front-end app
-  const verificationEmailUrl = `${process.env.FRONTEND_URL}/verify-email?token=${token}`;
+  const verificationEmailUrl = `${baseUrl}/verify-email?token=${token}`;
   const text = `Dear user,
 To verify your email, click on this link: ${verificationEmailUrl}
 If you did not create an account, then ignore this email.`;
