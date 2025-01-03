@@ -12,15 +12,15 @@ const swaggerDef = {
     },
   },
   servers: [
-    // {
-    //   url: `http://localhost:${config.port}/v1`,
-    // },
+    {
+      url: `http://localhost:${config.port}/v1`,
+    },
     // {
     //   url: `https://school-ease.onrender.com/v1`,
     // },
-    {
-      url: `https://mdbstorebe-express.onrender.com/v1`,
-    },
+    // {
+    //   url: `https://mdbstorebe-express.onrender.com/v1`,
+    // },
   ],
 };
 

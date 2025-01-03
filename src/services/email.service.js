@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+dotenv.config(); // Load .env variables
 const config = require('../config/config');
 const logger = require('../config/logger');
 const { User } = require('../models/user.model');
