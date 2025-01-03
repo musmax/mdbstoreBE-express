@@ -62,6 +62,9 @@ module.exports = {
   paystack: {
     secret: envVars.PAYSTACK_SECRET,
   },
+  frontendurl: {
+    FRONTEND_URL: envVars.FRONTEND_URL,
+  },
   email: {
     smtp: {
       host: envVars.SMTP_HOST,
