@@ -107,7 +107,6 @@ const sendUserWelcomeEmail = async (user) => {
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  console.log(userBody);
   const { userType, role, ...userProfile } = userBody;
   console.log('musa');
   // Check if email is taken
